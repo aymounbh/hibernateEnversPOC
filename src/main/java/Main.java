@@ -82,7 +82,7 @@ public class Main {
         callback.execute(session);
     }
 
-    private static void createSomeTestData(Session session) {
+    protected static void createSomeTestData(Session session) {
 
         Book book1 = new Book("Scala In Action", "Nilanjan Raychaudhuri", "9781935182757");
         Book book2 = new Book("lift In Action", "Timothy Perrett", "9781935182801");

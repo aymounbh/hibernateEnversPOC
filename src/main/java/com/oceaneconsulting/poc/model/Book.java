@@ -13,6 +13,10 @@ import java.io.Serializable;
 @Audited
 public class Book implements Serializable{
 
+
+    private static final long serialVersionUID = 19981017L;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "BOOK_ID")

@@ -10,13 +10,13 @@
 
 	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/home/${user}/mkyongapp.log</file>
+		<file>/${user.home}/envers.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
 		</encoder>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<FileNamePattern>/home/${user}/envers.%i.log.zip</FileNamePattern>
+			<FileNamePattern>/${user.home}/envers.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>10</MaxIndex>
 		</rollingPolicy>
@@ -28,10 +28,10 @@
 
 	</appender>
 
-	<logger name="org.hibernate.type" level="DEBUG" />
-	<logger name="org.hibernate" level="DEBUG" />
+	<logger name="org.hibernate.type" level="WARN" />
+	<logger name="org.hibernate" level="WARN" />
 
-	<root level="INFO">
+	<root level="WARN">
 		<!-- <appender-ref ref="FILE" /> -->
 		<appender-ref ref="STDOUT" />
 	</root>
