@@ -16,7 +16,7 @@
 		</encoder>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<FileNamePattern>c:/mkyongapp.%i.log.zip</FileNamePattern>
+			<FileNamePattern>/home/${user}/envers.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
 			<MaxIndex>10</MaxIndex>
 		</rollingPolicy>
