@@ -1,5 +1,7 @@
 package com.oceaneconsulting.poc.model;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,6 +10,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "BOOKS")
+@Audited
 public class Book implements Serializable{
 
     @Id
@@ -58,5 +61,15 @@ public class Book implements Serializable{
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", isbn='" + isbn + '\'' +
+                '}';
     }
 }
