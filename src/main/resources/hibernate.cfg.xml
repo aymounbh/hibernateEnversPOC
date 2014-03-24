@@ -12,6 +12,16 @@
          <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.show_sql">true</property>
+
+        <!--hibernate envers configuration properties-->
+        <property name="org.hibernate.envers.audit_table_suffix">_MANUAL_AUD</property>
+        <!--this property is quiet intersting as it gives us the possibility-->
+        <!--to use another schema to be used other the one used by Tanaguru-->
+        <!--<property name="org.hibernate.envers.default_schema"></property>-->
+        <!--property to be used to not to store data deletion audit-->
+        <property name="org.hibernate.envers.store_data_at_delete">false</property>
+
+
         <mapping class="com.oceaneconsulting.poc.model.Book"/>
         <mapping class="com.oceaneconsulting.poc.model.User"/>
     </session-factory>

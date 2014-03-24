@@ -1,5 +1,8 @@
 package com.oceaneconsulting.poc.model;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +12,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "USERS")
+@Audited()
 public class User implements Serializable{
 
     private static final long serialVersionUID = 199800017L;

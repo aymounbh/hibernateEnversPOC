@@ -1,5 +1,7 @@
 import com.oceaneconsulting.poc.model.Book;
 import com.oceaneconsulting.poc.model.User;
+import com.oceaneconsulting.poc.repository.QueryAuditedData;
+import com.oceaneconsulting.poc.repository.QueryBookAuditedData;
 import com.oceaneconsulting.poc.util.HibernateCallback;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
@@ -7,6 +9,7 @@ import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -47,7 +50,7 @@ public class Main {
                 }
             }
 
-//            createSomeTestData(session);
+            createSomeTestData(session);
 
 
 
@@ -59,7 +62,14 @@ public class Main {
 
             insert(selected);
 
-
+            QueryAuditedData<Book> q = new QueryBookAuditedData(session);
+            System.out.println(q.getAuditedEntity(30));
+            for (Object o : q.getRevisions()) {
+                if (o instanceof Book) {
+                    Book result = (Book) o;
+                    System.out.println(result);
+                }
+            }
 
         } finally {
             session.close();
