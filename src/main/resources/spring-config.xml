@@ -35,12 +35,10 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <!--hibernate envers configuration properties-->
                 <prop key="org.hibernate.envers.audit_table_suffix">_MANUAL_AUD</prop>
-                <prop key="org.hibernate.envers.auditTablePrefix">AUD_</prop>
                 <!--this property is quiet intersting as it gives us the possibility-->
-                <prop key="org.hibernate.envers.auditTableSuffix"></prop>
                 <!--to use another schema to be used other the one used by Tanaguru-->
-                <!--<prop key="org.hibernate.envers.storeDataAtDelete">true</prop>-->
                 <!--<property name="org.hibernate.envers.default_schema"></property>-->
+                <prop key="org.hibernate.envers.storeDataAtDelete">false</prop>
                 <!--property to be used to not to store data deletion audit-->
                 <!--<prop key="org.hibernate.envers.store_data_at_delete">false</prop>-->
             </props>
