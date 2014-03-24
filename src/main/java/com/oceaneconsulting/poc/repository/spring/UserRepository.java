@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository(value = "userRepository")
 @Transactional(readOnly = true)
-public class UserRepository /**implements AbstractRepository<User>*/{
+public class UserRepository{
 
     @Autowired
     SessionFactory sessionFactory;

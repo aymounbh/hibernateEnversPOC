@@ -12,22 +12,19 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository(value = "bookRepository")
 @Transactional(readOnly = true)
-public class BookRepository/** extends GenericRepository<Book>*/ {
+public class BookRepository{
     @Autowired
     SessionFactory sessionFactory;
 
-//    @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void create(Book book) {
         sessionFactory.getCurrentSession().save(book);
     }
-//    @Override
     @Transactional
     public void delete(Book book) {
         sessionFactory.getCurrentSession().delete(book);
     }
 
-//    @Override
     @Transactional
     public Book get(long id) {
         return (Book) sessionFactory.getCurrentSession().get(Book.class, id);
