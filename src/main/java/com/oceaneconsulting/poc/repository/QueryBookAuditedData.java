@@ -21,6 +21,11 @@ public class QueryBookAuditedData implements QueryAuditedData<Book> {
     }
 
     @Override
+    public Integer getMaxRevisionNumberForEntity(Class<Book> clazz) {
+        return null;
+    }
+
+    @Override
     public Book getAuditedEntityByRevisionNumber(int rev) {
         final AuditReader auditReader = AuditReaderFactory.get(session);
         AuditQuery auditQuery = auditReader.createQuery().forEntitiesAtRevision(Book.class, rev);

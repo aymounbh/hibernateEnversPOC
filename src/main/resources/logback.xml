@@ -30,6 +30,7 @@
 
 	<logger name="org.hibernate.type" level="WARN" />
 	<logger name="org.hibernate" level="WARN" />
+    <logger name="com.oceaneconsulting.poc.repository.spring" level="info"/>
 
 	<root level="WARN">
 		<!-- <appender-ref ref="FILE" /> -->

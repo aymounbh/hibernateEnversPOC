@@ -10,7 +10,7 @@
     <context:annotation-config />
 
     <context:component-scan
-            base-package="com.oceaneconsulting.poc.repository.spring"/>
+            base-package="com.oceaneconsulting.poc.repository,com.oceaneconsulting.poc.repository.spring"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
@@ -35,7 +35,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
                 <!--hibernate envers configuration properties-->
                 <prop key="org.hibernate.envers.audit_table_suffix">_MANUAL_AUD</prop>
                 <!--this property is quiet intersting as it gives us the possibility-->
