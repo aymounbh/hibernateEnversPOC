@@ -28,9 +28,22 @@ public class QueryBookAuditedDataRepository implements QueryAuditedData<Book> {
     @Autowired
     SessionFactory sessionFactory;
 
+
+    @Override
+    public Integer getMinRevisionNumberForEntity(Class<Book> clazz) {
+        AuditReader auditReader = getAuditReader();
+        Number revision = (Number) auditReader.createQuery()
+                .forRevisionsOfEntity(clazz, false, true).addProjection(AuditEntity.revisionNumber().min());
+        return (Integer) revision;
+    }
+
+    private AuditReader getAuditReader() {
+        return AuditReaderFactory.get(sessionFactory.getCurrentSession());
+    }
+
     @Override
     public Integer getMaxRevisionNumberForEntity(Class<Book> clazz) {
-        AuditReader auditReader = AuditReaderFactory.get(sessionFactory.getCurrentSession());
+        AuditReader auditReader = getAuditReader();
         AuditQuery auditQuery = auditReader.createQuery().forRevisionsOfEntity(clazz, false, true);
        return (Integer) auditQuery.addProjection(AuditEntity.revisionNumber().max()).getSingleResult();
     }
@@ -38,9 +51,9 @@ public class QueryBookAuditedDataRepository implements QueryAuditedData<Book> {
     @Override
     public Book getAuditedEntityByRevisionNumber(int rev) {
 
-        AuditReader auditReader = AuditReaderFactory.get(sessionFactory.getCurrentSession());
-        AuditQuery auditQuery = auditReader.createQuery().forRevisionsOfEntity(Book.class, false, true);
-        Object[] result = (Object[]) auditQuery.addProjection(AuditEntity.revisionNumber().max()).getSingleResult();
+        AuditReader auditReader = getAuditReader();
+        AuditQuery auditQuery = auditReader.createQuery().forRevisionsOfEntity(Book.class, false, false);
+        Object[] result = (Object[]) auditQuery.add(AuditEntity.property("rev").eq(rev)).getSingleResult();
             logger.info("Book "+result[0]+" Revision "+result[1]);
 
         return null;
@@ -48,7 +61,7 @@ public class QueryBookAuditedDataRepository implements QueryAuditedData<Book> {
 
     @Override
     public Number getAuditedEntityByRevisionDate(Date revisionTime) {
-        AuditReader auditReader = AuditReaderFactory.get(sessionFactory.getCurrentSession());
+        AuditReader auditReader = getAuditReader();
         return null;
     }
 

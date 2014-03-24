@@ -12,6 +12,8 @@ import java.util.List;
 @Repository
 public interface QueryAuditedData<T> {
 
+    Integer getMinRevisionNumberForEntity(Class<Book> clazz);
+
     Integer getMaxRevisionNumberForEntity(Class<Book> clazz);
 
     T getAuditedEntityByRevisionNumber(int rev);

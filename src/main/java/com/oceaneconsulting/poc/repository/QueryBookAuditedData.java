@@ -21,6 +21,11 @@ public class QueryBookAuditedData implements QueryAuditedData<Book> {
     }
 
     @Override
+    public Integer getMinRevisionNumberForEntity(Class<Book> clazz) {
+        return null;
+    }
+
+    @Override
     public Integer getMaxRevisionNumberForEntity(Class<Book> clazz) {
         return null;
     }
