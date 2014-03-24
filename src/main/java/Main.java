@@ -9,7 +9,6 @@ import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -63,7 +62,7 @@ public class Main {
             insert(selected);
 
             QueryAuditedData<Book> q = new QueryBookAuditedData(session);
-            System.out.println(q.getAuditedEntity(30));
+            System.out.println(q.getAuditedEntityByRevisionNumber(30));
             for (Object o : q.getRevisions()) {
                 if (o instanceof Book) {
                     Book result = (Book) o;

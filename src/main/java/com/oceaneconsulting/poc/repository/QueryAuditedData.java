@@ -8,9 +8,9 @@ import java.util.List;
  */
 public interface QueryAuditedData<T> {
 
-    T getAuditedEntity(int rev);
+    T getAuditedEntityByRevisionNumber(int rev);
 
-    Number getAuditedEntity(Date revisionTime);
+    Number getAuditedEntityByRevisionDate(Date revisionTime);
 
     List getRevisions();
 

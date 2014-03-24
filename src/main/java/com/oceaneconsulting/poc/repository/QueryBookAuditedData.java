@@ -21,7 +21,7 @@ public class QueryBookAuditedData implements QueryAuditedData<Book> {
     }
 
     @Override
-    public Book getAuditedEntity(int rev) {
+    public Book getAuditedEntityByRevisionNumber(int rev) {
         final AuditReader auditReader = AuditReaderFactory.get(session);
         AuditQuery auditQuery = auditReader.createQuery().forEntitiesAtRevision(Book.class, rev);
         if (!auditQuery.getResultList().isEmpty()) {
@@ -31,7 +31,7 @@ public class QueryBookAuditedData implements QueryAuditedData<Book> {
     }
 
     @Override
-    public Number getAuditedEntity(Date revisionTime) {
+    public Number getAuditedEntityByRevisionDate(Date revisionTime) {
         final AuditReader auditReader = AuditReaderFactory.get(session);
         return auditReader.getRevisionNumberForDate(revisionTime);
     }
