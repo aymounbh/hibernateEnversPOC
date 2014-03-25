@@ -59,6 +59,11 @@ public class QueryBookAuditedDataRepository implements QueryAuditedData<Book> {
         return null;
     }
 
+    /**
+     * I don't think we gonna use it as envers uses a timeStamp
+     * @param revisionTime
+     * @return
+     */
     @Override
     public Number getAuditedEntityByRevisionDate(Date revisionTime) {
         AuditReader auditReader = getAuditReader();
